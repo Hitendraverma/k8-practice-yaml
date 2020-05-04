@@ -1,0 +1,22 @@
+#Nginx pod configmap 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-configmap
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    volumeMounts:
+    - name: nginx-data-vol
+      mountPath: "/etc/nginx-data"
+      readOnly: true
+  volumes:
+    - name: nginx-data-vol
+      configMap:
+        name: nginx-configmap-vol
+        items:
+          - key: file1.txt
+            path: filea.txt
+          - key: file2.txt
+            path: fileb.txt

@@ -1,0 +1,2 @@
+This is demo property file 
+UI Properties 
